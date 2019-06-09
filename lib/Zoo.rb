@@ -35,7 +35,13 @@ class Zoo
 
     def animal_nicknames
         # should return an array of all the nicknames of animals that a specific instance of a zoo has.
-        Animal.all.collect {|animal| animal.nickname if animal.zoo == self}
+        nicknames = []
+        Animal.all.each do |animal|
+            if animal.zoo == self
+                nicknames << animal.nickname
+            end 
+        end
+        nicknames
     end
 
     def self.find_by_location(location:)
