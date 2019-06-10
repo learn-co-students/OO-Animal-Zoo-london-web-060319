@@ -32,6 +32,9 @@ class Animal
 
 # Animal.find_by_species should take in an animal's species as
 #  an argument and return an array of all the animals, which are of that species.
+    def self.find_by_species(species_input)
+        @@all.select {|animal| animal.species == species_input}
+    end
 
 
 end
