@@ -22,7 +22,9 @@ class Zoo
         @@all
     end
 # Zoo#animals should return all the animals that a specific instance of a zoo has.
-
+    def animals
+        Animal.all.select {|animal| animal.zoo == @name}
+    end
 # Zoo#animal_species should return an array of all the species (as strings) of the
 #  animals in the zoo. However, if you have two dogs, it should only return
 #   one "Dog" string (aka an unique array).
