@@ -38,10 +38,18 @@ class Zoo
 
   # Zoo#find_by_species should take in an animal's species as an argument and
   #  return an array of all the animals in that zoo, which are of that species.
-
+    def find_by_species(species_input)
+        Animal.find_by_species(species_input).select {|animal| animal.zoo == @name }
+    end
   # Zoo#animal_nicknames should return an array of all the nicknames of animals that
   #  a specific instance of a zoo has.
+  def animal_nicknames
+    Animal.all.map { |animal| animal.nickname if animal.zoo == @name }.uniq.compact
+  end
 
   # Zoo.find_by_location should take in a location as an argument and return an
   #  array of all the zoos within that location.
+  def self.find_by_location(location_input)
+    @@all.select {|zoo| zoo.location == location_input}
+  end
 end
